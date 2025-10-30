@@ -50,5 +50,12 @@ namespace HalloWinUI.Views
                 ViewModel.SupprimerMaison();
             }
         }
+
+        private void MaisonAjouter(object sender, RoutedEventArgs e)
+        {
+            ViewModel.AjouterModel();
+        }
+
+        
     }
 }

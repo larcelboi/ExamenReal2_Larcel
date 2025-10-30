@@ -24,7 +24,19 @@ namespace HalloWinUI.ViewModels.Pages
 
         public ObservableCollection<MaisonViewModel> Maisons { get; }
 
-        public string NouvelleMaison { get; set; }
+        private string _nouvelleMaison;
+        public string NouvelleMaison
+        {
+            get => _nouvelleMaison;
+            set
+            {
+                if (_nouvelleMaison != value)
+                {
+                    _nouvelleMaison = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         public MainMaisonsViewModel(IHalloweenDataProvider dataProvider)
         {
@@ -51,6 +63,17 @@ namespace HalloWinUI.ViewModels.Pages
             if (MaisonSelectionnee != null)
             {
                 Maisons.Remove(MaisonSelectionnee); 
+            }
+        }
+        public void AjouterModel()
+        {
+            Maison maison = new Maison(NouvelleMaison, false);
+            if (NouvelleMaison != null)
+            {
+
+                Maisons.Add(new MaisonViewModel(maison));
+
+
             }
         }
     }
